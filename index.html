@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        input{
+            width: 40vh;
+            margin-top: 2vh;
+        }
+        button{
+            width: 20vh;
+            margin-top: 1vh;
+        }
+        div{
+            border: 1px solid;
+            width: 50%;
+            margin: auto;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <h1>Store the data in Browser Local Storage And Get The Data From Local Storage</h1>
+    <input type="text" value="babar" id="fName"><br>
+    <input type="text" value="ameen" id="lName"><br>
+    <!-- <input type="number" > -->
+    <button onclick="setStorage()">set</button><br>
+    <button onclick="getStorage()">get</button><br>
+    <div id="show"></div>
+</body>
+<script>
+    function setStorage(){
+            var fName=document.getElementById("fName").value;
+            // fName=JSON.stringify(fName);
+            var lName=document.getElementById("lName").value
+            // lName=JSON.stringify(lName);
+            var ob={firstName:`${fName}`,lastName:`${lName}`};
+            ob=JSON.stringify(ob);
+            localStorage.setItem("1",ob)
+            // localStorage.setItem("2",lName)
+            document.getElementById("show").style.visibility="hidden";
+    }
+    function getStorage(){
+            var ob=localStorage.getItem("1");
+            ob=JSON.parse(ob);
+            // var lName=localStorage.getItem("2");
+            // lName=JSON.parse(lName);
+            document.getElementById("show").style.visibility="visible";
+            document.getElementById("show").innerHTML=`<h1>First Name: ${ob.firstName}</h1><br><h1>Last Name: ${ob.lastName}</h1>`;
+
+    }
+</script>
+</html>
